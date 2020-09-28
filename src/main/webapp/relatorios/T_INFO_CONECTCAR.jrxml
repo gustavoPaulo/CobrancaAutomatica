@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="T_INFO_CONECTCAR" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f8acc00-497b-4d2d-8eeb-bd97cd3c6f1c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Cobranca Automatica Conectcar"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="CD_CONECTCAR" class="java.lang.String">
+		<fieldDescription><![CDATA[CD_CONECTCAR]]></fieldDescription>
+	</field>
+	<field name="OBSERVACOES" class="java.lang.String">
+		<fieldDescription><![CDATA[OBSERVACOES]]></fieldDescription>
+	</field>
+	<field name="MOBILE_DESKTOP" class="java.lang.String">
+		<fieldDescription><![CDATA[MOBILE_DESKTOP]]></fieldDescription>
+	</field>
+	<field name="NM_SUPER_UNIDADE" class="java.lang.String">
+		<fieldDescription><![CDATA[NM_SUPER_UNIDADE]]></fieldDescription>
+	</field>
+	<field name="NM_EMPRESA" class="java.lang.String">
+		<fieldDescription><![CDATA[NM_EMPRESA]]></fieldDescription>
+	</field>
+	<field name="DS_USUARIO_CONECTCAR" class="java.lang.String">
+		<fieldDescription><![CDATA[DS_USUARIO_CONECTCAR]]></fieldDescription>
+	</field>
+	<field name="SIGLA_UNIDADE_ERP" class="java.lang.String">
+		<fieldDescription><![CDATA[SIGLA_UNIDADE_ERP]]></fieldDescription>
+	</field>
+	<field name="CD_UNIDADE_ERP" class="java.lang.String">
+		<fieldDescription><![CDATA[CD_UNIDADE_ERP]]></fieldDescription>
+	</field>
+	<field name="CONTATO_SUPERVISOR" class="java.lang.String">
+		<fieldDescription><![CDATA[CONTATO_SUPERVISOR]]></fieldDescription>
+	</field>
+	<field name="DT_INSTALACAO" class="java.util.Date">
+		<fieldDescription><![CDATA[DT_INSTALACAO]]></fieldDescription>
+	</field>
+	<field name="SENHA_CONECTCAR" class="java.lang.String">
+		<fieldDescription><![CDATA[SENHA_CONECTCAR]]></fieldDescription>
+	</field>
+	<field name="ID_GERAL" class="java.lang.Long">
+		<fieldDescription><![CDATA[ID_GERAL]]></fieldDescription>
+	</field>
+	<field name="STATUS_INSTALACAO" class="java.lang.String">
+		<fieldDescription><![CDATA[STATUS_INSTALACAO]]></fieldDescription>
+	</field>
+	<field name="UNIDADE" class="java.lang.String">
+		<fieldDescription><![CDATA[UNIDADE]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="cc169926-74a9-4303-8efa-174cb452f49c"/>
+				<staticText>
+					<reportElement x="20" y="20" width="410" height="43" forecolor="#FFFFFF" uuid="ad8b9dcb-7d5b-47b6-a121-c5e3a6aef3b8"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Relatório Conect Car]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="69" width="180" height="20" forecolor="#FFFFFF" uuid="ad4c3eff-ed48-4384-b2a5-2b44f4f38cf8"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Resultado da pesquisa]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="30" width="70" height="30" uuid="179d0bb5-9e02-49ed-804a-8e831038b759">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9af531a-70f3-4411-a466-982527f93f36"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="31" width="70" height="30" uuid="dee75c4e-f367-472b-803e-3dc2f800f92a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4d0bc7e-c84f-4440-810b-8814bd9cd977"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="30" width="70" height="30" uuid="ace55b57-8b67-4f6c-9a5c-2cacaa2dabc7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="596e5202-75d3-4f72-81b2-bef48458db9b"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="31" width="80" height="30" uuid="3540fe10-7707-4f1d-89b1-096d3cd1cc23">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1c945314-934a-4b11-84b4-7ca71218d0b2"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="31" width="70" height="30" uuid="cdbc7470-b496-4456-9e08-8b9eed59dde6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6c58fbc-e31a-4059-99af-1805ad7fa65f"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Senha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="31" width="97" height="30" uuid="62f3aefc-cdb3-41c7-a91a-effd8f20717b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b6bee8e-cb73-4dc0-bd2f-4cdaf95b3932"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Instalação]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="70" height="30" uuid="0c473345-95c8-4c3c-b3ef-faf8056054cf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9af531a-70f3-4411-a466-982527f93f36"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{NM_EMPRESA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="1" width="70" height="30" uuid="2251d3c9-50aa-4dc5-a6c8-766dee0b9635">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4d0bc7e-c84f-4440-810b-8814bd9cd977"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{UNIDADE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="70" height="30" uuid="a5d89f0a-8a58-4c46-9169-6cd53bf36d8f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="596e5202-75d3-4f72-81b2-bef48458db9b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CD_CONECTCAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="80" height="30" uuid="84df41eb-4af5-4918-b543-880ccef75f99">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1c945314-934a-4b11-84b4-7ca71218d0b2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DS_USUARIO_CONECTCAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="1" width="70" height="30" uuid="8efd99fb-6122-4e3a-8dd2-c1bd9cbd3753">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6c58fbc-e31a-4059-99af-1805ad7fa65f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{SENHA_CONECTCAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="1" width="97" height="30" uuid="a072e58a-437c-42b8-b762-cd965fc18360">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b6bee8e-cb73-4dc0-bd2f-4cdaf95b3932"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{DT_INSTALACAO})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="28" width="555" height="30" uuid="524c77ef-6eb3-46ec-b5ca-2449613569be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cobrança Automática © 2020 v 1.2 - Softcase Soluções Tecnológicas"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

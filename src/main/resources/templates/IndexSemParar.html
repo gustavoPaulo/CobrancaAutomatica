@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Sem Parar - Home</title>
+</head>
+<head th:replace="/templateSistema :: titulo">
+</head>
+<body>
+
+	<div th:replace="/templateSistema :: barraBody"></div>
+
+	<div th:replace="/templateSistema :: mensagemErro"></div>
+	
+	<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		<span th:text="${mensagem}">Sucesso!</span>
+	</div>
+	
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Pesquisa Sem Parar</h1>
+			</div>
+		</div>
+
+		<div class="panel-body">
+
+			<form method="post" class="form-horizontal" th:action="@{/pesquisarSemparar}" th:object="${sempararObj}" id="pesquisarSemparar" onsubmit="return validarData() ? true : false;">
+				<div class="form-group">
+					<div class="col-sm-3">
+						<div class="input-group">
+							<input name="nomePesquisaSemparar" id="nomePesquisaSemparar" class="form-control" 
+							placeholder="Qual unidade está procurando?" autofocus="autofocus"
+							th:value="${nomePesquisaSemparar}"/>
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					<div class="col-sm-2">
+						<select class="form-control" id="EMPRESA" name="EMPRESA">
+							<option th:text="Todos"></option>
+							<option th:if="${EMPRESA != ''} ? '${EMPRESA}' " th:text="${EMPRESA}"></option>
+							<option th:each="c : ${cliente}" th:text="${c}"></option>
+						</select>					
+					</div>
+					
+					
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="DataInicio" name="DataInicio" th:value="${DataInicio}" placeholder="De"
+							   onkeypress="$(this).mask('00/00/0000')" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+							   data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+					</div>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="DataFim" name="DataFim" th:value="${DataFim}" placeholder="Até"
+							   onkeypress="$(this).mask('00/00/0000')" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+							   data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+					</div>
+
+
+					<div class="col-sm-offset-1 col-sm-1">
+						<a data-placement="top" title="Baixar PDF. Selecione um cliente para ajudar no resultado." rel="tooltip">
+							<button type="submit" class="btn btn-default" 
+									onclick="document.getElementById('pesquisarSemparar').method = 'get'">
+									
+								<i class="glyphicon glyphicon-download-alt"></i>
+							</button>
+						</a>
+					</div>
+					
+					<div class="col-sm-1">
+						<a data-placement="top" title="Enviar pesquisa por E-mail. Selecione um cliente para ajudar no resultado." 
+							rel="tooltip" data-toggle="modal" data-target="#listaEnviarEmail">
+							<button type="submit" class="btn btn-primary">
+								<i class="glyphicon glyphicon-envelope"></i>
+							</button>
+							
+							<input type="text" id="enviarPara" name="enviarPara" hidden="true">
+						</a>
+					</div>
+					
+		<div class="modal fade" id="listaEnviarEmail" tabindex="-1" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Para quem deseja enviar o relatório?</h4>
+					</div>
+					
+					<div class="modal-body">
+						<label>Digite os e-mails separados por vírgula</label>
+						<br/>
+						<textarea id="listaEmailModal" name="listaEmailModal"></textarea>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+						<button onclick="setaListaEmail()" class="btn btn-primary">Enviar</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+				</div>
+			</form>
+
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center">Unidade</th>
+							<th class="text-center">Cliente</th>
+							<th class="text-center">Sistema</th>
+							<th class="text-center">Código</th>
+							<th class="text-center">Hash</th>
+							<th class="text-center">Status</th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="sempararModel : ${semparar.content}">
+							<td class="text-center" th:text="${sempararModel.UNIDADE}"></td>
+							<td class="text-center" th:text="${sempararModel.EMPRESA}"></td>
+							<td class="text-center" th:text="${sempararModel.MOBILE_DESKTOP}"></td>
+							<td class="text-center" th:text="${sempararModel.CD_SEMPARAR}"></td>
+							<td class="text-center" th:text="${sempararModel.HASH_ORIGINAL}"></td>
+							<td class="text-center " th:attr="data-role=${sempararModel.ID_GERAL}">
+								<span class="label" th:text="${sempararModel.STATUS_INSTALACAO}" 
+								th:if="${sempararModel.STATUS_INSTALACAO == 'ATIVO'}" th:classappend="'label-success'"></span>
+
+								<span class="label" th:text="${sempararModel.STATUS_INSTALACAO}" 
+								th:if="${sempararModel.STATUS_INSTALACAO == 'INATIVO'}" th:classappend="'label-danger'"></span>
+								
+								<span class="label" th:text="${sempararModel.STATUS_INSTALACAO}" 
+								th:if="${sempararModel.STATUS_INSTALACAO == 'SEM_COBRANCA'}" th:classappend="'label-warning'"></span>
+							</td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" title="Editar" rel="tooltip" data-placement="top"
+									th:href="@{/editarSemparar/{idSemparar}(idSemparar=${sempararModel.ID_GERAL})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModalSemparar"
+									th:attr="data-id=${sempararModel.ID_GERAL}, data-unidade=${sempararModel.UNIDADE}"
+									title="Excluir" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+								<a class="btn btn-link btn-xs" title="Visualizar Detalhes" rel="tooltip" data-placement="top" 
+									th:href="@{/detalhesSemparar/{idSemparar}(idSemparar=${sempararModel.ID_GERAL})}">
+									<span class="glyphicon glyphicon-info-sign"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="8" th:if="${#lists.isEmpty(semparar.content)}">Nenhum hash foi encontrada.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="form-group">
+				<div class="text-center">
+					<a th:href="@{/hashPaginaSemparar(page=${semparar.number-1}, size=${semparar.size}, nomePesquisaSemparar=${nomePesquisaSemparar}, EMPRESA=${EMPRESA}, DataInicio=${DataInicio}, DataFim=${DataFim})}"
+						data-placement="top" title="Anterior" rel="tooltip">
+						<span class="glyphicon glyphicon-chevron-left" th:if="${semparar.hasPrevious()}"></span>
+					</a>					
+					
+					<th:block th:each="i: ${#numbers.sequence(0, semparar.totalPages - 1)}">
+						<a th:href="@{/hashPaginaSemparar(page=${i}, size=${semparar.size}, nomePesquisaSemparar=${nomePesquisaSemparar}, EMPRESA=${EMPRESA}, DataInicio=${DataInicio}, DataFim=${DataFim})}">[[ ${i} + 1 ]]</a>
+					</th:block>
+						
+					<a th:href="@{/hashPaginaSemparar(page=${semparar.number+1}, size=${semparar.size}, nomePesquisaSemparar=${nomePesquisaSemparar}, EMPRESA=${EMPRESA}, DataInicio=${DataInicio}, DataFim=${DataFim})}"
+						data-placement="top" title="Próximo" rel="tooltip">
+						<span class="glyphicon glyphicon-chevron-right" th:if="${semparar.hasNext()}"></span>
+					</a>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		<div class="modal fade" id="confirmacaoExclusaoModalSemparar" tabindex="-1" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog">
+
+			<form th:attr="data-url-base=@{/excluirSemparar}">
+			
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Você tem certeza?</h4>
+					</div>
+					
+					<div class="modal-body">
+						<span>Você deseja mesmo excluir esse hash?</span>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Excluir</button>
+					</div>
+					
+				</div>
+			</form>
+			</div>
+		</div>
+		
+	</div>
+	
+
+<div th:replace="/templateSistema :: scriptBody"></div>
+<div th:replace="/templateSistema :: rodapePagina"></div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="titulo">
+	
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8"></meta>
+	<meta name="viewport" content="width=device-width"></meta>
+
+	<link rel="shortcut icon" th:href="@{/images/softcaseLogo.png}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datepicker.standalone.min.css}"></link>
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+<div th:fragment="barraBody">
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/CobrancaAutomatica}" title="Início" rel="tooltip" data-placement="bottom">
+				<img th:src="@{/images/logo-inicio.png}"
+					width="30px" height="30px" />
+				</a>
+				
+				<a class="navbar-brand" th:href="@{/listaSemParar}" rel="tooltip" data-placement="bottom" 
+				   title="Sem Parar">
+					<label class="control-label">Sem Parar</label>
+				</a>
+				<a class="navbar-brand" th:href="@{/cadastroSemParar}" rel="tooltip" data-placement="bottom" 
+				   title="Novo Sem Parar">
+					<label class="control-label">Cadastro Sem Parar</label>
+				</a>
+				
+				<a class="navbar-brand" th:href="@{/listaConectCar}" rel="tooltip" data-placement="bottom" 
+				   title="Conect Car">
+					<label class="control-label">Conect Car</label>
+				</a>
+				<a class="navbar-brand" th:href="@{/cadastroConectcar}" rel="tooltip" data-placement="bottom" 
+				   title="Novo Conect Car">
+					<label class="control-label">Cadastro Conect Car</label>
+				</a>
+				
+			</div>
+		</div>
+	</nav>
+</div>
+
+
+<div th:fragment="mensagemErro">
+	<div class="alert alert-danger" th:if="${!#strings.isEmpty(msgErro)}">
+		<div th:each="detailedError : ${msgErro}">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			<span th:text="${detailedError}">Ops... Algo deu errado!!!</span>
+		</div>
+	</div>
+</div>
+
+
+<div th:fragment="scriptBody">
+	<script th:src="@{/js/jquery-2.1.4.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.pt-BR.min.js}"></script>
+	<script th:src="@{/js/semParar.js}"></script>
+	<script th:src="@{/js/conectCar.js}"></script>
+	<script th:src="@{/js/envioEmailConectcar.js}"></script>
+	<script th:src="@{/js/envioEmailSemparar.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+</div>
+
+<div th:fragment="rodapePagina">
+	<footer class="footer-copyright text-center py-3">
+      	<h5>Cobrança Automática © 2020 v 1.2 - 
+       		<a class="btn btn-link btn-xs" title="Viste nosso site." rel="tooltip" data-placement="top"
+       			onclick="window.open('http://www.softcasenet.com.br')">SoftCase Soluções Tecnológicas
+       		</a>
+      	</h5>
+   </footer>
+</div>
+
+</body>
+</html>

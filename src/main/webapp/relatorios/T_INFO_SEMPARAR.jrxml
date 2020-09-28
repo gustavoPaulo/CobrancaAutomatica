@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="T_INFO_SEMPARAR" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="49e4d7f1-6271-48aa-8e08-4207a7957e59">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Cobranca Automatica Semparar"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="HASH_ORIGINAL" class="java.lang.String">
+		<fieldDescription><![CDATA[HASH_ORIGINAL]]></fieldDescription>
+	</field>
+	<field name="OBSERVACOES" class="java.lang.String">
+		<fieldDescription><![CDATA[OBSERVACOES]]></fieldDescription>
+	</field>
+	<field name="UNIDADE_ERP" class="java.lang.String">
+		<fieldDescription><![CDATA[UNIDADE_ERP]]></fieldDescription>
+	</field>
+	<field name="CD_SEMPARAR" class="java.lang.String">
+		<fieldDescription><![CDATA[CD_SEMPARAR]]></fieldDescription>
+	</field>
+	<field name="EMPRESA" class="java.lang.String">
+		<fieldDescription><![CDATA[EMPRESA]]></fieldDescription>
+	</field>
+	<field name="SUPERVISOR_UNIDADE" class="java.lang.String">
+		<fieldDescription><![CDATA[SUPERVISOR_UNIDADE]]></fieldDescription>
+	</field>
+	<field name="MOBILE_DESKTOP" class="java.lang.String">
+		<fieldDescription><![CDATA[MOBILE_DESKTOP]]></fieldDescription>
+	</field>
+	<field name="CONTATO_SUPERVISOR" class="java.lang.String">
+		<fieldDescription><![CDATA[CONTATO_SUPERVISOR]]></fieldDescription>
+	</field>
+	<field name="DT_INSTALACAO" class="java.util.Date">
+		<fieldDescription><![CDATA[DT_INSTALACAO]]></fieldDescription>
+	</field>
+	<field name="ID_GERAL" class="java.lang.Long">
+		<fieldDescription><![CDATA[ID_GERAL]]></fieldDescription>
+	</field>
+	<field name="CD_UND_ERP" class="java.lang.Long">
+		<fieldDescription><![CDATA[CD_UND_ERP]]></fieldDescription>
+	</field>
+	<field name="STATUS_INSTALACAO" class="java.lang.String">
+		<fieldDescription><![CDATA[STATUS_INSTALACAO]]></fieldDescription>
+	</field>
+	<field name="HASH_CRIPTOGRAFADO" class="java.lang.String">
+		<fieldDescription><![CDATA[HASH_CRIPTOGRAFADO]]></fieldDescription>
+	</field>
+	<field name="UNIDADE" class="java.lang.String">
+		<fieldDescription><![CDATA[UNIDADE]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="1e82d6e4-9826-43de-a0eb-02844438ed04"/>
+				<staticText>
+					<reportElement x="20" y="20" width="410" height="43" forecolor="#FFFFFF" uuid="2261c9ff-8980-4048-9481-04a9f8fc60b7"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Relatório Sem Parar]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="69" width="180" height="20" forecolor="#FFFFFF" uuid="05a2abe1-9c8f-4230-9b2f-76bfa3de2fcc"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Resultado da pesquisa]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="30" width="80" height="30" uuid="2b4b7f6c-1877-4ccd-a7b8-7710f41705e7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a135e34-2da3-479e-ac2d-62ed71226ebd"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="30" width="80" height="30" uuid="867d0e6f-2388-4a30-9934-972404ae9a1b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d06eea61-9244-4afc-a989-e37ded61c495"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="30" width="70" height="30" uuid="d12fe39c-c7dc-4e7a-95f2-fa8713966c69">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0557900-8a00-4275-931a-fb425729e613"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="30" width="140" height="30" uuid="a1685ee8-fe5e-4623-8477-73dab6859946">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c450c1c4-adf8-4896-a671-2d4130b718e3"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hash]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="30" width="105" height="30" uuid="87d06eaf-c9d7-47bf-857f-7ec3428d8f64">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="42094080-1d49-45c6-9eb1-792af6791217"/>
+				</reportElement>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Instalação]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="30" uuid="ef9bb664-42d8-4368-8b73-497552695388">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a135e34-2da3-479e-ac2d-62ed71226ebd"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{EMPRESA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="80" height="30" uuid="51b436d1-b50d-4b3e-8c2a-a070c91d78fe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d06eea61-9244-4afc-a989-e37ded61c495"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{UNIDADE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="70" height="30" uuid="7cb96f66-36f9-4e7d-9e93-0caaeae36b08">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0557900-8a00-4275-931a-fb425729e613"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CD_SEMPARAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="0" width="140" height="30" uuid="937b9362-8191-44c8-b939-1f5fb6c7422c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c450c1c4-adf8-4896-a671-2d4130b718e3"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{HASH_ORIGINAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="105" height="30" uuid="2a1c97a2-1ea7-4205-ab6c-a9a88f385eff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="42094080-1d49-45c6-9eb1-792af6791217"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{DT_INSTALACAO})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="28" width="555" height="30" uuid="b6de94c2-6509-4e30-9718-e8101f58a3ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cobrança Automática © 2020 v 1.2 - Softcase Soluções Tecnológicas"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

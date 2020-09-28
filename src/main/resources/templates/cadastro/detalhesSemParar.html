@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Sem Parar - Detalhes</title>
+</head>
+<head th:replace="/templateSistema :: titulo">
+</head>
+<body>
+
+	<div th:replace="/templateSistema :: barraBody"></div>
+
+	<div th:replace="/templateSistema :: mensagemErro"></div>
+	
+	<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		<span th:text="${mensagem}">Sucesso!</span>
+	</div>
+	
+	
+	<form class="form-horizontal" action="" th:object="${sempararObj}">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title aw-titulo-panel">Detalhes Sem Parar</h1>
+				</div>
+			</div>
+
+			<div class="panel-body">
+	
+			<input id="ID_GERAL" name="ID_GERAL" type="hidden" th:field="*{ID_GERAL}"/>
+			
+				<div class="form-group">
+					<label for="EMPRESA" class="col-sm-2 control-label">Cliente</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="EMPRESA" name="EMPRESA" th:field="*{EMPRESA}" readonly="readonly"/>
+					</div>
+					
+					<label for="CD_UND_ERP" class="col-sm-3 control-label">Cód. ERP / Portal</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="CD_UND_ERP" name="CD_UND_ERP" th:field="*{CD_UND_ERP}" readonly="readonly"/>
+					</div>
+				</div>
+				
+				<div class="form-group">	
+					<label for="UNIDADE" class="col-sm-2 control-label">Unidade</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="UNIDADE" name="UNIDADE" th:field="*{UNIDADE}" readonly="readonly"/>
+					</div>
+					
+					<label for="UNIDADE_ERP" class="col-sm-3 control-label">Sigla ERP / Portal</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="UNIDADE_ERP" name="UNIDADE_ERP" th:field="*{UNIDADE_ERP}" readonly="readonly"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="MOBILE_DESKTOP" class="col-sm-2 control-label">Sistema</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="MOBILE_DESKTOP" name="MOBILE_DESKTOP" th:field="*{MOBILE_DESKTOP}" readonly="readonly"/>
+					</div>
+					
+					<label for="SUPERVISOR_UNIDADE" class="col-sm-4 control-label">Supervisor da Unidade</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="SUPERVISOR_UNIDADE" name="SUPERVISOR_UNIDADE" th:field="*{SUPERVISOR_UNIDADE}" readonly="readonly"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="CD_SEMPARAR" class="col-sm-2 control-label">Códgio</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="CD_SEMPARAR" name="CD_SEMPARAR" th:field="*{CD_SEMPARAR}" maxlength="7" readonly="readonly"/>
+					</div>
+					
+					<label for="CONTATO_SUPERVISOR" class="col-sm-4 control-label">Contato</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" onkeypress="$(this).mask('(00) 0000-00009')" th:field="*{CONTATO_SUPERVISOR}"
+							   id="CONTATO_SUPERVISOR" name="CONTATO_SUPERVISOR"  autofocus="autofocus" placeholder="(00) 0000-0000" readonly="readonly"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="HASH_ORIGINAL" class="col-sm-2 control-label">Hash</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="HASH_ORIGINAL" name="HASH_ORIGINAL" th:field="*{HASH_ORIGINAL}" readonly="readonly"/>
+					</div>
+					
+					<label for="STATUS_INSTALACAO" class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="STATUS_INSTALACAO" name="STATUS_INSTALACAO" th:field="*{STATUS_INSTALACAO}" readonly="readonly"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="HASH_CRIPTOGRAFADO" class="col-sm-2 control-label">Hash Criptografado</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="HASH_CRIPTOGRAFADO" name="HASH_CRIPTOGRAFADO" th:field="*{HASH_CRIPTOGRAFADO}" readonly="readonly"/>
+					</div>
+					
+					<label for="DT_INSTALACAO" class="col-sm-2 control-label">Instalação</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="DT_INSTALACAO" name="DT_INSTALACAO" th:field="*{DT_INSTALACAO}"
+							   data-date-format="dd/mm/yyyy" data-date-language="pt-BR" placeholder="dd/mm/yyyy" readonly="readonly"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="OBSERVACOES" class="col-sm-2 control-label">Observações</label>
+					<div class="col-sm-3">
+						<textarea class="form-control" id="OBSERVACOES" name="OBSERVACOES" th:field="*{OBSERVACOES}" readonly="readonly"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	
+<div th:replace="/templateSistema :: scriptBody"></div>
+<div th:replace="/templateSistema :: rodapePagina"></div>
+
+</body>
+</html>

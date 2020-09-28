@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Conect Car - Home</title>
+</head>
+<head th:replace="/templateSistema :: titulo">
+</head>
+<body>
+
+	<div th:replace="/templateSistema :: barraBody"></div>
+	
+	<div th:replace="/templateSistema :: mensagemErro"></div>
+
+	<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		<span th:text="${mensagem}">Sucesso!</span>
+	</div>
+
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Pesquisa Conect Car</h1>
+			</div>
+		</div>
+
+		<div class="panel-body">
+
+			<form method="post" class="form-horizontal" th:action="@{/pesquisarConectcar}" th:object="${conectcarObj}" id="pesquisarConectcar" onsubmit="return validarData() ? true : false;">
+				<div class="form-group">
+					<div class="col-sm-3">
+						<div class="input-group">
+							<input name="nomePesquisaConectcar" id="nomePesquisaConectcar" class="form-control" 
+							placeholder="Qual unidade está procurando?" autofocus="autofocus"
+							th:value="${nomePesquisaConectcar}"/>
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					<div class="col-sm-2">
+						<select class="form-control" id="NM_EMPRESA" name="NM_EMPRESA">
+							<option th:text="Todos"></option>
+							<option th:if="${NM_EMPRESA != ''} ? '${NM_EMPRESA}' " th:text="${NM_EMPRESA}"></option>
+							<option th:each="c : ${clienteConectcar}" th:text="${c}"></option>
+						</select>					
+					</div>
+					
+					
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="DataInicio" name="DataInicio" th:value="${DataInicio}" placeholder="De"
+							   onkeypress="$(this).mask('00/00/0000')" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+							   data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+					</div>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="DataFim" name="DataFim" th:value="${DataFim}" placeholder="Até"
+							   onkeypress="$(this).mask('00/00/0000')" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+							   data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+					</div>
+					
+					
+					<div class="col-sm-offset-1 col-sm-1">
+						<a data-placement="top" title="Baixar PDF. Selecione um cliente para ajudar no resultado." rel="tooltip">
+							<button type="submit" class="btn btn-default" 
+									onclick="document.getElementById('pesquisarConectcar').method = 'get'">
+									
+								<i class="glyphicon glyphicon-download-alt"></i>
+							</button>
+						</a>
+					</div>
+					
+					<div class="col-sm-1">
+						<a data-placement="top" title="Enviar pesquisa por E-mail. Selecione um cliente para ajudar no resultado." 
+							rel="tooltip" data-toggle="modal" data-target="#listaEnviarEmailConectcar">
+							<button type="submit" class="btn btn-primary">
+								<i class="glyphicon glyphicon-envelope"></i>
+							</button>
+							
+							<input type="text" id="enviarParaConectcar" name="enviarParaConectcar" hidden="true">
+						</a>
+					</div>
+					
+		<div class="modal fade" id="listaEnviarEmailConectcar" tabindex="-1" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Para quem deseja enviar o relatório?</h4>
+					</div>
+					
+					<div class="modal-body">
+						<label>Digite os e-mails separados por vírgula</label>
+						<br/>
+						<textarea id="listaEmailModalConectcar" name="listaEmailModalConectcar"></textarea>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+						<button onclick="setaListaEmailConectcar()" class="btn btn-primary">Enviar</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+				</div>
+			</form>
+
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center">Unidade</th>
+							<th class="text-center">Cliente</th>
+							<th class="text-center">Sistema</th>
+							<th class="text-center">Código</th>
+							<th class="text-center">Usuário</th>
+							<th class="text-center">Senha</th>
+							<th class="text-center">Status</th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="conectcarModel : ${conectcar.content}">
+							<td class="text-center" th:text="${conectcarModel.UNIDADE}"></td>
+							<td class="text-center" th:text="${conectcarModel.NM_EMPRESA}"></td>
+							<td class="text-center" th:text="${conectcarModel.MOBILE_DESKTOP}"></td>
+							<td class="text-center" th:text="${conectcarModel.CD_CONECTCAR}"></td>
+							<td class="text-center" th:text="${conectcarModel.DS_USUARIO_CONECTCAR}"></td>
+							<td class="text-center" th:text="${conectcarModel.SENHA_CONECTCAR}"></td>
+							<td class="text-center " th:attr="data-role=${conectcarModel.ID_GERAL}">
+								<span class="label" th:text="${conectcarModel.STATUS_INSTALACAO}" 
+								th:if="${conectcarModel.STATUS_INSTALACAO == 'ATIVO'}" th:classappend="'label-success'"></span>
+
+								<span class="label" th:text="${conectcarModel.STATUS_INSTALACAO}" 
+								th:if="${conectcarModel.STATUS_INSTALACAO == 'INATIVO'}" th:classappend="'label-danger'"></span>
+								
+								<span class="label" th:text="${conectcarModel.STATUS_INSTALACAO}" 
+								th:if="${conectcarModel.STATUS_INSTALACAO == 'SEM_COBRANCA'}" th:classappend="'label-warning'"></span>
+							</td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" title="Editar" rel="tooltip" data-placement="top"
+									th:href="@{/editarConectcar/{idConectcar}(idConectcar=${conectcarModel.ID_GERAL})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModalConectcar"
+									th:attr="data-id=${conectcarModel.ID_GERAL}, data-unidade=${conectcarModel.UNIDADE}"
+									title="Excluir" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+								<a class="btn btn-link btn-xs" title="Visualizar Detalhes" rel="tooltip" data-placement="top" 
+									th:href="@{/detalhesConectcar/{idConectcar}(idConectcar=${conectcarModel.ID_GERAL})}">
+									<span class="glyphicon glyphicon-info-sign"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="8" th:if="${#lists.isEmpty(conectcar.content)}">Nenhum hash foi encontrada.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="form-group">
+				<div class="text-center">
+					<a th:href="@{/hashPaginaConectcar(page=${conectcar.number-1}, size=${conectcar.size}, nomePesquisaConectcar=${nomePesquisaConectcar}, NM_EMPRESA=${NM_EMPRESA}, DataInicio=${DataInicio}, DataFim=${DataFim})}"
+						data-placement="top" title="Anterior" rel="tooltip">
+						<span class="glyphicon glyphicon-chevron-left" th:if="${conectcar.hasPrevious()}"></span>
+					</a>					
+					
+					<th:block th:each="i: ${#numbers.sequence(0, conectcar.totalPages - 1)}">
+						<a th:href="@{/hashPaginaConectcar(page=${i}, size=${conectcar.size}, nomePesquisaConectcar=${nomePesquisaConectcar}, NM_EMPRESA=${NM_EMPRESA}, DataInicio=${DataInicio}, DataFim=${DataFim})}">[[ ${i} + 1 ]]</a>
+					</th:block>
+						
+					<a th:href="@{/hashPaginaConectcar(page=${conectcar.number+1}, size=${conectcar.size}, nomePesquisaConectcar=${nomePesquisaConectcar}, NM_EMPRESA=${NM_EMPRESA}, DataInicio=${DataInicio}, DataFim=${DataFim})}"
+						data-placement="top" title="Próximo" rel="tooltip">
+						<span class="glyphicon glyphicon-chevron-right" th:if="${conectcar.hasNext()}"></span>
+					</a>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		<div class="modal fade" id="confirmacaoExclusaoModalConectcar" tabindex="-1" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog">
+
+			<form th:attr="data-url-base=@{/excluirConectcar}">
+			
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Você tem certeza?</h4>
+					</div>
+					
+					<div class="modal-body">
+						<span>Você deseja mesmo excluir esse hash?</span>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Excluir</button>
+					</div>
+					
+				</div>
+			</form>
+			</div>
+		</div>
+		
+	</div>
+	
+
+<div th:replace="/templateSistema :: scriptBody"></div>
+<div th:replace="/templateSistema :: rodapePagina"></div>
+
+</body>
+</html>
